@@ -7,9 +7,6 @@ const web3 = new Web3(provider);
 
 const { interface, bytecode } = require('../compile');
 
-console.log(interface, bytecode);
-
-
 let accounts;
 let inbox;
 
@@ -27,5 +24,17 @@ beforeEach(async () => {
 describe('Inbox', () => {
   it('deploys a contract', () => {
     assert.ok(inbox.options.address);
+  });
+
+  it('has a default message', async () => {
+    const message = await inbox.methods.message().call();
+    assert.equal(message, 'hi');
+  });
+
+  it('can change the message', async () => {
+    console.log(inbox.methods);
+    const changedMessage = await inbox.methods.setMessage('Hello World').send({ from: accounts[0] });
+    console.log(changedMessage);
+    assert.equal(changedMessage, 'Hello World');
   });
 });
