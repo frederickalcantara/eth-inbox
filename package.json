@@ -1,0 +1,15 @@
+{
+  "name": "eth-inbox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "ganache-cli": "^6.2.5",
+    "mocha": "^5.2.0",
+    "solc": "0.4.25",
+    "web3": "^1.0.0-beta.37"
+  }
+}
