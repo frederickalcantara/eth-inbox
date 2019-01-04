@@ -32,9 +32,8 @@ describe('Inbox', () => {
   });
 
   it('can change the message', async () => {
-    console.log(inbox.methods);
-    const changedMessage = await inbox.methods.setMessage('Hello World').send({ from: accounts[0] });
-    console.log(changedMessage);
-    assert.equal(changedMessage, 'Hello World');
+    await inbox.methods.setMessage('Hello World').send({ from: accounts[0] });
+    const message = await inbox.methods.message().call();
+    assert.equal(message, 'Hello World');
   });
 });
